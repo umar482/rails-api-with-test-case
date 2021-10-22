@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: f160a89366404cfd8ac6ea7c45bb64c61c0dd74b
+  branch: master
+  specs:
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -61,7 +69,6 @@ GEM
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
     bcrypt (3.1.16)
-    blueprinter (0.25.3)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -167,10 +174,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blueprinter
   bootsnap (>= 1.4.4)
   byebug
   devise_token_auth
+  faker!
   listen (~> 3.3)
   pg
   puma (~> 5.0)
