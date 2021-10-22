@@ -3,7 +3,6 @@ module Api
     class ApiController < ActionController::API
       include Concerns::Respondable
       include Concerns::Authenticator
-      # include Concerns::ValidatorHandler
       include Concerns::ErrorHandler
 
       def status
