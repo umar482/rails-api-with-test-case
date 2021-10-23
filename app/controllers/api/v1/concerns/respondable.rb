@@ -9,7 +9,7 @@ module Api
         end
 
         def show
-          render_response find_resource
+          render_response get_resource
         end
 
         def new
@@ -17,8 +17,8 @@ module Api
         end
 
         def edit
-          find_resource
-          render_response find_resource
+          get_resource
+          render_response get_resource
         end
 
         def create
@@ -26,12 +26,12 @@ module Api
         end
 
         def update
-          find_resource.assign_attributes(resource_params)
+          get_resource.assign_attributes(resource_params)
           render_response current_resource if update_resource
         end
 
         def destroy
-          find_resource
+          get_resource
           destroy_resource
           head http_success
         end
@@ -42,8 +42,8 @@ module Api
           end
 
           def http_success
-            return :created if action_name == :create
-            return :no_content if action_name == :destroy
+            return :created if action_name.to_sym == :create
+            return :no_content if action_name.to_sym == :destroy
             return :ok
           end
 
@@ -75,7 +75,7 @@ module Api
             self.current_resource ||= resource_klass.new(resource_params)
           end
 
-          def find_resource
+          def get_resource
             self.current_resource ||= resource_scope.find(params[:id]) if params[:id]
           end
 

@@ -7,7 +7,7 @@ module Api
       def resource_params
         params.require(:reservation).permit(
           :date, :time, :vehicle_id,
-          customer_attributes: [ :id, :name, :email, :phone ]
+          customer_attributes: [ :id, :first_name, :last_name, :email, :phone ]
         )
       end
     end
