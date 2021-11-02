@@ -9,6 +9,9 @@ require 'faker'
 
 User.create(email: "test@test.com", password: 112233)
 10.times do
-  make = Make.create(name: Faker::Vehicle.manufacture)
-  make.vehicles.create(model:  Faker::Vehicle.model)
+  Vehicle.create(
+    cms_vehicle_id: Faker::Alphanumeric.alphanumeric(number: 6),
+    model:  Faker::Vehicle.model,
+    make:  Faker::Vehicle.manufacture
+  )
 end

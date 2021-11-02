@@ -14,7 +14,7 @@ For test case
 
 run: bundle exec rspec
 Now go to Postman and import this API for testing
-https://www.getpostman.com/collections/2f9618d02d45f1357ca4
+https://www.getpostman.com/collections/7ee7c9c7d16e230ba404
 
   POST http://localhost:3000/api/v1/auth
   POST http://localhost:3000/api/v1/sign_in
@@ -24,18 +24,18 @@ https://www.getpostman.com/collections/2f9618d02d45f1357ca4
 
 
 Steps Need to follow
-  1 Create a user using API or us seed user
-  2 Sign in the user with sign in using email and password
-  3 Get client, access-token, uid from the header of successful sign in request
-  4 Set these three into environment variable on postman ref(https://learning.postman.com/docs/sending-requests/variables/)
-  5 Now you can go to the postman and run "Create reservation" API with the right data(make sure to set the header in an environment variable or manually)
-    Make sure pass vehicle id that exists in the database, I have created 10 vehicle, you can use 1--10 for vechile_id
-  6 If you going to update reservation, make sure pass right user id who created reservation.
+  1 - Create a user using API or use existing(seed) user
+  2 - Sign in the user with sign_in API using email and password
+  3 - Get client, access_token, uid from the headers of successful sign in request
+  4 - Set these three values into environment variable on Postman. Ref: https://learning.postman.com/docs/sending-requests/variables/
+  5 - Now you can go to Postman and run "Create reservation" API with the right data(make sure to set the header in an environment variable or manually)
+      - Make sure to pass vehicle id that exists in the database, I have created 10 vehicle, you can use any id between 1 - 10 for vechile_id
+  6 - If you are going to update reservation, make sure to pass id of the user who created reservation.
 
 Assumptions
-   On reservation form, I assume that form will get available vehicle model and vehicle make from our database using API
-   When someone fills the form for reservation, they will select vehicle modal using select box and that select box will return vehicle id and on submit form vehicle id will be passed
-   I have created a table of "make" by assuming that in this fast-moving world we can't make it enum as there is a possibility that we need to add more make in the upcoming month using our admin panel
-   I did not use any API as we have to only give API endpoint for creating, but when we need to work on advance we can use  active_model_serializers, jsonapi-rb or blueprinter and even can make our custom validator for each action upon need
-   I have made code generic which will make any model basic API without writing any code in the controller
-   I did not limit the resource routes as I have to implement completed rest endpoint
+  The reservation form will fetch available vehicles model and make from our database using API.
+  When someone fills the reservation form, they will select vehicle model from a list of vehicle models. It will return vehicle id on form submission which will later be passed to create reservation API.
+  To create a reservation using API, keeping in mind the security aspect of app, added a user sign_in which returns client, uid and access_token in response headers. These headers will be passed in create reservation request to validate authenticity of the request.
+  Added a cms_customer_id attribute to customers table assuming our customers might be coming from a CMS. The reason I used term 'cms' to prevent from clash in default rails naming convention.
+  I did not use any gem as we have to only give API endpoint for creating, but when we need to work on advance we can use  active_model_serializers, jsonapi-rb or blueprinter and even can make our custom validator for each action upon need
+  I have made code generic which will make any model basic API without writing any code in the controller

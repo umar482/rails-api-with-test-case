@@ -68,7 +68,7 @@ module Api
           end
 
           def resource_params
-            raise "Override resource_params"
+            raise I18n.t('api.errors.override_params')
           end
 
           def build_resource
