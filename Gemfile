@@ -8,9 +8,6 @@ ruby '2.7.0'
 gem 'rails', '~> 6.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-gem 'devise_token_auth'
-
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
@@ -32,7 +29,6 @@ gem 'rack-cors'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 5.0'
