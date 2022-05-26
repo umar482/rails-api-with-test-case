@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :temperature_reading do
     user { nil }
@@ -6,14 +8,12 @@ FactoryBot.define do
   end
 
   factory :user do
-    name { "MyString" }
+    name { 'MyString' }
     gear { nil }
   end
 
   factory :gear do
-    name { "MyString" }
+    name { 'MyString' }
     offset_value { 1.5 }
   end
-
-  
 end

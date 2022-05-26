@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateGears < ActiveRecord::Migration[6.1]
   def change
     create_table :gears do |t|
