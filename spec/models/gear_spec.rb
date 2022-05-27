@@ -11,13 +11,11 @@ RSpec.describe Gear, type: :model do
     end
   end
 
-  context "factory" do
-    it "has a valid factory" do
+  context 'factory' do
+    it 'has a valid factory' do
       gear = create(:gear)
 
       expect(gear.valid?).to eq(true)
     end
   end
 end
-
-

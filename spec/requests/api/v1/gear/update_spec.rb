@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 describe 'PUT /api/v1/gears/:id', type: :request do
   let(:gear) { create(:gear, name: 'abc', offset_value: 1.4) }
-  let(:id) { gear.id } 
+  let(:id) { gear.id }
   let(:api_v1_gear) { "/api/v1/gears/#{id}" }
 
   context 'with valid params' do
     let(:params) { { gear: { offset_value: 1.4 } } }
 
-    it 'returns success' do    
+    it 'returns success' do
       put api_v1_gear, params: params
       expect(response).to have_http_status(:success)
     end
@@ -18,8 +20,8 @@ describe 'PUT /api/v1/gears/:id', type: :request do
 
     it 'returns the gear' do
       put api_v1_gear, params: params
-      expect(JSON.parse(response.body)["id"]).to eq gear.id
-      expect(JSON.parse(response.body)["offset_value"]).to eq gear.offset_value
+      expect(JSON.parse(response.body)['id']).to eq gear.id
+      expect(JSON.parse(response.body)['offset_value']).to eq gear.offset_value
     end
   end
 
