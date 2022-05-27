@@ -10,6 +10,7 @@ module Api
           rescue_from ActiveRecord::RecordNotFound,        with: :not_found
           rescue_from ActiveRecord::RecordInvalid,         with: :record_invalid
           rescue_from ActionController::ParameterMissing,  with: :parameter_missing
+          rescue_from ActionController::UnpermittedParameters, with: :unpermitted_params
         end
 
         def not_found(exception)
@@ -25,6 +26,11 @@ module Api
         def parameter_missing(exception)
           logger.info { exception }
           render json: { error: I18n.t('api.errors.missing_param') }, status: :unprocessable_entity
+        end
+
+        def unpermitted_params(exception)
+          logger.info { exception }
+          render json: { error: exception }, status: :bad_request
         end
       end
     end
