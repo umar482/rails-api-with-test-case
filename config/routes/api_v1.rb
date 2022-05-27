@@ -5,6 +5,6 @@ namespace :api do
     get :status, to: 'api#status'
     resources :users
     resources :gears, only: %i[update]
-    resources :temperature_readings
+    resources :temperature_readings, only: %i[create]
   end
 end
