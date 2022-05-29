@@ -35,12 +35,12 @@ describe 'PUT /api/v1/gears/:id', type: :request do
 
     it 'does not update the offset value' do
       put api_v1_gear, params: params
-      expect(gear.reload.offset_value).to eq(params[:gear][:offset_value])
+      expect(gear.reload.offset_value).to_not eq(params[:gear][:offset_value])
     end
 
     it 'returns the error' do
       put api_v1_gear, params: params
-      expect(JSON.parse(response.body)['error']).to include('is not an email')
+      expect(JSON.parse(response.body)['error']).to include('found unpermitted parameter')
     end
   end
 

@@ -15,7 +15,7 @@ module Api
 
       def set_actual_temp
         @user = User.find_by(id: params[:temperature_reading][:user_id])
-        return if @user.blank? || params[:body_temp].nil?
+        return if @user.blank? || params[:temperature_reading][:body_temp].nil?
 
         # temperature caliberation
         params[:temperature_reading][:actual_temp] = params[:temperature_reading][:body_temp] + @user.gear.offset_value
