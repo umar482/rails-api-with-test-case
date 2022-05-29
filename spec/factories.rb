@@ -2,14 +2,14 @@
 
 FactoryBot.define do
   factory :temperature_reading do
-    user { nil }
+    user { User.first }
     body_temp { 1.5 }
     actual_temp { 1.5 }
   end
 
   factory :user do
     name { 'MyString' }
-    gear { nil }
+    gear { Gear.first }
   end
 
   factory :gear do
