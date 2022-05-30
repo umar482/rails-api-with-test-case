@@ -10,6 +10,10 @@ module Api
           :user_id, :body_temp
         )
       end
+
+      def load_collection
+        self.current_collection = User.find(params[:user_id]).temperature_readings
+      end
     end
   end
 end
