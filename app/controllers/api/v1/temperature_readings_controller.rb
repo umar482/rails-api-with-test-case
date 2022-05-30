@@ -7,9 +7,13 @@ module Api
 
       private
 
-      # set pagination
+      # setting optional pagination
       def load_collection
-        self.current_collection = find_user(params[:user_id]).temperature_readings
+        self.current_collection =
+          find_user(params[:user_id])
+          .temperature_readings
+          .limit(params[:limit])
+          .offset(params[:offset])
       end
 
       def find_user(user_id)
