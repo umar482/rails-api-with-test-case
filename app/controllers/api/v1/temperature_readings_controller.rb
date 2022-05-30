@@ -13,16 +13,22 @@ module Api
         )
       end
 
+      # set pagination
       def load_collection
-        self.current_collection = User.find(params[:user_id]).temperature_readings
+        self.current_collection = find_user(params[:user_id]).temperature_readings
+      end
+
+      def find_user(user_id)
+        User.find(user_id)
       end
 
       def notify_user
-        user = User.find_by(id: params[:temperature_reading][:user_id])
+        user = find_user(params[:temperature_reading][:user_id])
 
         if user&.high_temperature?
           # UserMailer.warn_user(user).deliver_now
-          # configure GMail settings in development.rb and uncomment this code.
+          # Configure user_mailer credentials and uncomment this line to make the emails work
+          # for simplicity, user model does not have email and you have to set receiver email from credentials settings
           puts "sending email to #{user.name}"
         end
       end

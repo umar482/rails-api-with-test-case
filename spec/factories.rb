@@ -8,12 +8,12 @@ FactoryBot.define do
   end
 
   factory :user do
-    name { 'MyString' }
+    name { 'John' }
     gear { Gear.first }
   end
 
   factory :gear do
-    name { 'MyString' }
+    name { 'Mi Watch' }
     offset_value { 1.5 }
   end
 end

@@ -73,6 +73,10 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     diff-lcs (1.4.4)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.10.0)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -158,6 +162,9 @@ GEM
       rspec-mocks (~> 3.9.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.4)
+    ruby_http_client (3.5.5)
+    sendgrid-ruby (6.6.2)
+      ruby_http_client (~> 3.4)
     shoulda-matchers (5.0.0)
       activesupport (>= 5.2.0)
     spring (3.0.0)
@@ -183,6 +190,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   database_cleaner
+  dotenv-rails
   factory_bot_rails
   listen (~> 3.3)
   pg
@@ -190,6 +198,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.1.4)
   rspec-rails (~> 3.6)
+  sendgrid-ruby
   shoulda-matchers (~> 5.0)
   spring
   tzinfo-data
