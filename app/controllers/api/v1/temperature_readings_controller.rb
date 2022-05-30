@@ -20,10 +20,10 @@ module Api
       def notify_user
         user = User.find_by(id: params[:temperature_reading][:user_id])
 
-        if user && user&.high_temperature?
-          puts '*' * 10
-          puts 'Fever detected'
-          puts '*' * 10
+        if user&.high_temperature?
+          # UserMailer.warn_user(user).deliver_now
+          # configure GMail settings in development.rb and uncomment this code.
+          puts "sending email to #{user.name}"
         end
       end
     end

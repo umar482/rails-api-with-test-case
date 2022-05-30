@@ -18,7 +18,7 @@ RSpec.describe TemperatureReading, type: :model do
 
   describe TemperatureReading do
     context 'temperature reading associations' do
-      it "should belong to user" do
+      it 'should belong to user' do
         user = TemperatureReading.reflect_on_association(:user)
         expect(user.macro).to eq(:belongs_to)
       end

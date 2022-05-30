@@ -8,12 +8,12 @@ RSpec.describe User, type: :model do
 
   describe User do
     context 'user associations' do
-      it "should have many temperature readings" do
+      it 'should have many temperature readings' do
         temp_readings = User.reflect_on_association(:temperature_readings)
         expect(temp_readings.macro).to eq(:has_many)
       end
 
-      it "should belong to gear" do
+      it 'should belong to gear' do
         gear = User.reflect_on_association(:gear)
         expect(gear.macro).to eq(:belongs_to)
       end
