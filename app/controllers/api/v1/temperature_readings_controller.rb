@@ -7,7 +7,7 @@ module Api
 
       private
 
-      # setting optional pagination
+      # setting optional pagination for faster API performance
       def load_collection
         self.current_collection =
           find_user(params[:user_id])
