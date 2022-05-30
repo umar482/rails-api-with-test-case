@@ -2,6 +2,7 @@
 
 class UserMailer < ApplicationMailer
   def warn_user(_user)
+    # set the ENV variables using the .env-template
     @user = _user
     from = SendGrid::Email.new(email: ENV['SENDER_EMAIL'])
     to = SendGrid::Email.new(email: ENV['RECEIVER_EMAIL'])

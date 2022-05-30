@@ -7,12 +7,6 @@ module Api
 
       private
 
-      def resource_params
-        params.require(:temperature_reading).permit(
-          :user_id, :body_temp
-        )
-      end
-
       # set pagination
       def load_collection
         self.current_collection = find_user(params[:user_id]).temperature_readings
@@ -26,11 +20,18 @@ module Api
         user = find_user(params[:temperature_reading][:user_id])
 
         if user&.high_temperature?
-          # UserMailer.warn_user(user).deliver_now
           # Configure user_mailer credentials and uncomment this line to make the emails work
           # for simplicity, user model does not have email and you have to set receiver email from credentials settings
+
+          # UserMailer.warn_user(user).deliver_now
           puts "sending email to #{user.name}"
         end
+      end
+
+      def resource_params
+        params.require(:temperature_reading).permit(
+          :user_id, :body_temp
+        )
       end
     end
   end

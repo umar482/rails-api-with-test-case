@@ -7,6 +7,6 @@ namespace :api do
       resources :temperature_readings, only: %i[index]
     end
     resources :gears, only: %i[update]
-    resources :temperature_readings, only: %i[create] # move to users
+    resources :temperature_readings, only: %i[create]
   end
 end
