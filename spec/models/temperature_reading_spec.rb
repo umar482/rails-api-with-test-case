@@ -7,7 +7,7 @@ RSpec.describe TemperatureReading, type: :model do
   before(:each) { @user = User.create(name: 'ali', gear_id: @gear.id) }
 
   describe 'validations' do
-    context 'gear offset value' do
+    context 'temperature readings' do
       subject { build :temperature_reading }
       it { is_expected.to validate_presence_of(:body_temp) }
       it { should validate_numericality_of(:body_temp) }
