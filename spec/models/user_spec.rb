@@ -20,6 +20,32 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'Check for high temperature' do
+    context 'User with high temperature' do
+      temperatures = [37.6, 37.5, 37.6, 37.6, 38]
+      before do
+        temperatures.each do |temp|
+          TemperatureReading.create(user_id: @user.id, body_temp: temp)
+        end
+      end
+      it 'should return true because user has treding temperture higher than 37.5' do
+        expect(@user.high_temperature?).to eq(true)
+      end
+    end
+
+    context 'User with low temperature' do
+      temperatures = [32.6, 33.5, 32.6, 33.6, 38]
+      before do
+        temperatures.each do |temp|
+          TemperatureReading.create(user_id: @user.id, body_temp: temp)
+        end
+      end
+      it 'should return false because user has treding temperture lower than 37.5' do
+        expect(@user.high_temperature?).to eq(false)
+      end
+    end
+  end
+
   context 'factory' do
     it 'has a valid factory' do
       user = create(:user)
