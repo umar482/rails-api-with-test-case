@@ -4,9 +4,9 @@ class UserMailer < ApplicationMailer
   def warn_user(_user)
     # set the ENV variables using the .env-template
     @user = _user
-    from = SendGrid::Email.new(email: ENV['SENDER_EMAIL'])
+    # add testing email receiver in ENV
     to = SendGrid::Email.new(email: ENV['RECEIVER_EMAIL'])
-    subject = 'Notification about your body temperature'
+    subject = 'Your body temperature is high!'
     content = SendGrid::Content.new(type: 'text/html',
                                     value: ApplicationController.render(
                                       template: 'user_mailer/warn_user.html.erb', layout: nil
