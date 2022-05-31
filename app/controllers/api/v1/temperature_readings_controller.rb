@@ -3,6 +3,10 @@
 module Api
   module V1
     class TemperatureReadingsController < ApiController
+      # all exceptions are handled, so after_action will only work here
+      # if the temperature reading is sucessfully stored 
+      # it is mandatory because we want to check the latest body temperature reading
+      # before notifying user for high temperature 
       after_action :notify_user, only: [:create]
 
       private
